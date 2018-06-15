@@ -14,13 +14,14 @@ public class AccountResourceServiceImpl implements AccountResourceService {
     AccountResourceDao accountResourceDao;
 
     @Override
-    public List<AccountResourceDto> getListOfAccountResources(Integer accountId) {
+    public List<AccountResourceDto> getListOfAccountResources(Integer accountId, Integer lastTime) {
         final List<AccountResourceDto> accountResources = new LinkedList<>();
-        accountResourceDao.getListOfAccountResources(accountId).forEach(accountResourceEntity -> {
+        accountResourceDao.getListOfAccountResources(accountId, lastTime).forEach(accountResourceEntity -> {
             accountResources.add(new AccountResourceDto() {{
                 setAccountId(accountResourceEntity.getAccountId());
                 setResourceId(accountResourceEntity.getResourceId());
                 setQuantity(accountResourceEntity.getQuantity());
+                setNumPerMinute(accountResourceEntity.getNumPerMinute());
             }});
         });
         return accountResources;

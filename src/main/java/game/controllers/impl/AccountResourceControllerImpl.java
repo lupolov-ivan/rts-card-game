@@ -22,10 +22,10 @@ public class AccountResourceControllerImpl implements AccountResourceController 
 
     @Override
     @GET
-    @Path("{account_id}/resource/list")
+    @Path("{account_id}/last_time/{last_time}/resource/list")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<AccountResourceDto> getAccountResourcesList(@PathParam("account_id") Integer accountId) {
-        List<AccountResourceDto> accountResourceList = accountResourceService.getListOfAccountResources(accountId);
+    public List<AccountResourceDto> getAccountResourcesList(@PathParam("account_id") Integer accountId, @PathParam("last_time") Integer lastTime) {
+        List<AccountResourceDto> accountResourceList = accountResourceService.getListOfAccountResources(accountId, lastTime);
         Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, accountResourceList.toString());
         return accountResourceList;
     }

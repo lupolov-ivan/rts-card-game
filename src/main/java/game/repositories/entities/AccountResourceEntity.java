@@ -4,13 +4,16 @@ public class AccountResourceEntity {
     private Integer accountId;
     private Integer resourceId;
     private Integer quantity;
+    private Integer numPerMinute;
 
-    public AccountResourceEntity() {}
+    public AccountResourceEntity() {
+    }
 
-    public AccountResourceEntity(Integer accountId, Integer resourceId, Integer quantity) {
+    public AccountResourceEntity(Integer accountId, Integer resourceId, Integer quantity, Integer numPerMinute) {
         this.accountId = accountId;
         this.resourceId = resourceId;
         this.quantity = quantity;
+        this.numPerMinute = numPerMinute;
     }
 
     public Integer getAccountId() {
@@ -37,12 +40,20 @@ public class AccountResourceEntity {
         this.quantity = quantity;
     }
 
-    @Override
+    public Integer getNumPerMinute() {
+        return numPerMinute;
+    }
+
+    public void setNumPerMinute(Integer numPerMinute) {
+        this.numPerMinute = numPerMinute;
+    }
+
     public String toString() {
         return "AccountResourceEntity{" +
                 "accountId=" + accountId +
                 ", resourceId=" + resourceId +
                 ", quantity=" + quantity +
+                ", numPerMinute=" + numPerMinute +
                 '}';
     }
 }
